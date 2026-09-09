@@ -165,7 +165,7 @@ def main() -> int:
     # Same figure for bitrate <= 10000 kbps only
     bitrate_limit = 5000
     df_low = df[df["Bitrate"] <= bitrate_limit]
-    df_send_low = df_send[df_send["Bitrate"] <= bitrate_limit]
+    df_send_low = df_send[df_send["Bitrate"] <= bitrate_limit] if df_send is not None else None
     if not df_low.empty:
         draw_plots(df_low, args.output_dir, f"energy_cpu_trends_under_{bitrate_limit}kbps.png", df_send=df_send_low)
     return 0
